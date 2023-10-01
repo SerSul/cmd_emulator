@@ -21,8 +21,8 @@ def main():
     working_path = ""
     previous_path = ""
 
-    def checkDirectory(addres, pWay, allFiles):  # функция двигает дерикторию
-        if addres == "~":  # абсолютный адрес
+    def checkDirectory(addres, pWay, allFiles):
+        if addres == "~":
             return ""
         elif addres == ".." or addres == "-":
             if addres == '':
@@ -41,12 +41,13 @@ def main():
             if addres in allFiles:
                 return addres
             return "sh: cd: can't cd to " + addres + ": No such file or directory"
-        elif pWay == '' and (addres + '/') in allFiles:  # последовательный адрес
+        elif pWay == '' and (addres + '/') in allFiles:
             return addres
         elif pWay + '/' + addres + '/' in allFiles:
             return pWay + '/' + addres
         else:
-            return "sh: cd: can't cd to " + addres + ": No such file or directory"
+            print("sh: " + pWay + ": No such file or directory")
+            return pWay
 
     def checkFile(addres, pWay, allFiles):  # функция двигает дерикторию
         if "/root" in addres:
